@@ -3,7 +3,6 @@ var Plugin = require('broccoli-caching-writer');
 var fs = require('fs');
 var path = require('path');
 var RSVP = require('rsvp');
-
 var archiver = require('archiver');
 
 // Create a subclass BroccoliArchiver derived from Plugin
@@ -11,25 +10,23 @@ BroccoliArchiver.prototype = Object.create(Plugin.prototype);
 BroccoliArchiver.prototype.constructor = BroccoliArchiver;
 
 function BroccoliArchiver(inputNodes, options) {
-  options = options || {};
+	options = options || {};
 
-//	options.cacheInclude = [/.*/];
-//	options.inputFiles = ['**/**/**/*'];
+	options.cacheInclude = [/.*/];
+	options.inputFiles = ['**/*'];
 
 //  if (!(this instanceof BroccoliArchiver)) { return new BroccoliArchiver(inputTrees, options); }
   
 	this.inputNodes = Array.isArray(inputNodes) ? inputNodes : [inputNodes];
 
-	Plugin.call(this, this.inputNodes, {
-		annotation: options.annotation
-	  }); //options);
+	Plugin.call(this, this.inputNodes, options);
 
 	options.archive = options.archive || "archive.zip";
 	if (options.archive.indexOf('.') === -1) {
 		options.archive += '.zip';
 	}
 
-  this.options = options;
+	this.options = options;
 }
 
 BroccoliArchiver.prototype.build = function() {
@@ -63,13 +60,13 @@ BroccoliArchiver.prototype.build = function() {
 				expand: true, 
 				cwd: inputPath, 
 				src: ["**/**/**/*"], // no idea why this weird glob is needed
-				dot:true,
+				dot: true,
 				data: function (data) {
 					if (data.name.endsWith('.sh') || data.name.indexOf('.') === -1)
 					{
 						// make scripts executable
 						data.mode = 0x777;
-				  	}
+					}
 					return data;
 				}
 			});
