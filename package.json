@@ -1,0 +1,22 @@
+{
+  "name": "broccoli-archiver",
+  "version": "1.0.0",
+  "description": "Broccoli plugin that creates a zip file from a tree",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:silver-curve/broccoli-archiver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/silver-curve/broccoli-archiver/issues"
+  },  
+  "author": "Bryan Crotaz",
+  "license": "MIT",
+  "homepage": "https://github.com/silver-curve/broccoli-archiver",
+  "dependencies": {
+    "archiver": "^0.16.0",
+    "broccoli-caching-writer": "^2.2.1"
+  }
+}
