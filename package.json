@@ -17,6 +17,6 @@
   "homepage": "https://github.com/silver-curve/broccoli-archiver",
   "dependencies": {
     "archiver": "^0.16.0",
-    "broccoli-caching-writer": "^2.2.1"
+    "broccoli-caching-writer": "^3.0.0"
   }
 }
