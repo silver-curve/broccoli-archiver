@@ -21,7 +21,7 @@ export default class BroccoliArchiver extends CachingWriter {
     // only gets called if something has changed
     console.log("BroccoliArchiver build "+this.annotation);
     var inputPath = this.inputPaths[0];
-    var outputPath = path.join(this.outputPath, this.options.archive);
+    var outputPath = path.join(this.outputPath, this.archiveName);
     return new RSVP.Promise(function (resolve, reject) {
       var output = fs.createWriteStream(outputPath);
       var archive = archiver('zip');
